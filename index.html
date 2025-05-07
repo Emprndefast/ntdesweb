@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTDESWEB - Soluciones Digitales</title>
+    <!-- tsParticles CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <!-- Google Fonts: SF Pro Display (similar a Apple) y Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0071e3;
+            --text-color: #1d1d1f;
+            --background-color: #ffffff;
+            --secondary-background: #f5f5f7;
+            --transition-speed: 0.3s;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-color);
+            background: var(--background-color);
+        }
+
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .hero, .services-section, .portfolio-section, .contact-section, nav, footer {
+            position: relative;
+            z-index: 1;
+        }
+        .contact-form, .contact-form input, .contact-form textarea, .cta-button {
+            z-index: 2;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.95) 100%);
+        }
+
+        .hero-logo {
+            width: 140px;
+            max-width: 80vw;
+            height: auto;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform var(--transition-speed);
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-video-container {
+            width: 100vw;
+            max-width: none;
+            margin: 0 -2rem 2rem -2rem;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-desc {
+            font-size: 1.5rem;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 10;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .navbar-link {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity var(--transition-speed);
+        }
+
+        .navbar-link:hover {
+            opacity: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 2rem;
+            transition: all var(--transition-speed);
+        }
+
+        .cta-button:hover {
+            background: #0077ed;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-desc {
+                font-size: 1.2rem;
+            }
+            .navbar {
+                height: 48px;
+            }
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .services-section {
+            background: var(--secondary-background);
+            padding: 5rem 2rem 4rem 2rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px) saturate(120%);
+            border: 1.5px solid rgba(200,200,255,0.13);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #0001;
+            padding: 2rem 1.2rem;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+            will-change: transform;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+        }
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.3s; }
+        .service-card:nth-child(3) { animation-delay: 0.5s; }
+        .service-card:nth-child(4) { animation-delay: 0.7s; }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .portfolio-section {
+            background: #fff;
+            padding: 5rem 2rem 4rem 2rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .portfolio-card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px) saturate(120%);
+            border: 1.5px solid rgba(200,200,255,0.13);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #0001;
+            padding: 2rem 1.2rem;
+            text-align: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+            will-change: transform;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s forwards;
+        }
+        .portfolio-card:nth-child(1) { animation-delay: 0.2s; }
+        .portfolio-card:nth-child(2) { animation-delay: 0.4s; }
+        .portfolio-card:nth-child(3) { animation-delay: 0.6s; }
+        .portfolio-img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px #0002;
+        }
+        .portfolio-link {
+            display: inline-block;
+            margin-top: 0.7rem;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        .portfolio-link:hover {
+            background: #0077ed;
+        }
+        .portfolio-card.empty {
+            background: #f0f0f0;
+            color: #aaa;
+            border-style: dashed;
+        }
+        .contact-section {
+            background: var(--secondary-background);
+            padding: 5rem 2rem 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto 2rem auto;
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: none;
+        }
+        .contact-form textarea {
+            min-height: 100px;
+        }
+        .contact-info {
+            color: #86868b;
+            font-size: 1.1rem;
+        }
+        /* Menú móvil */
+        .navbar-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 20;
+            margin-left: 2rem;
+        }
+        .navbar-hamburger span {
+            height: 4px;
+            width: 100%;
+            background: #333;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .navbar-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 15;
+        }
+        .navbar-mobile .navbar-link {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 900px) {
+            .services-section, .portfolio-section, .contact-section {
+                padding: 3rem 1rem 2rem 1rem;
+            }
+        }
+        @media (max-width: 800px) {
+            .navbar-links {
+                display: none;
+            }
+            .navbar-hamburger {
+                display: flex;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-logo {
+                width: 80px;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+        .footer {
+            background: #fff;
+            color: #86868b;
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            font-size: 1rem;
+            border-top: 1px solid #eee;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(.77,0,.18,1), transform 1s cubic-bezier(.77,0,.18,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 1s cubic-bezier(.77,0,.18,1), transform 1s cubic-bezier(.77,0,.18,1);
+        }
+        .slide-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+        .service-card:hover, .portfolio-card:hover {
+            transform: translateY(-8px) scale(1.03) rotateZ(-1deg);
+            box-shadow: 0 8px 32px #0071e340, 0 2px 12px #0071e320;
+        }
+        .cta-button {
+            box-shadow: 0 2px 12px #0071e320;
+        }
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+        .contact-form, .contact-form input, .contact-form textarea, .cta-button, .navbar, .navbar-mobile {
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    
+    <nav class="navbar">
+        <div class="navbar-links">
+            <a href="#inicio" class="navbar-link">Inicio</a>
+            <a href="#servicios" class="navbar-link">Servicios</a>
+            <a href="#portafolio" class="navbar-link">Portafolio</a>
+            <a href="#contacto" class="navbar-link">Contacto</a>
+        </div>
+        <div class="navbar-hamburger" id="navbarHamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="navbar-mobile" id="navbarMobile">
+        <a href="#inicio" class="navbar-link">Inicio</a>
+        <a href="#servicios" class="navbar-link">Servicios</a>
+        <a href="#portafolio" class="navbar-link">Portafolio</a>
+        <a href="#contacto" class="navbar-link">Contacto</a>
+    </div>
+
+    <!-- Video 5 arriba -->
+
+
+    <section class="hero">
+        <img src="Public/Img/logo.png" alt="NTDESWEB Logo" class="hero-logo">
+        <div class="hero-video-container">
+            <video class="hero-video" id="video1" autoplay muted loop playsinline>
+                <source src="Public/Img/video (3).mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <video class="hero-video" id="video2" muted loop playsinline style="display: none;">
+                <source src="Public/Img/video (5).mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <h1 class="hero-title">Soluciones Digitales<br>para tu Negocio</h1>
+        <p class="hero-desc">Transformamos ideas en experiencias digitales excepcionales. Diseño, desarrollo y estrategia para impulsar tu presencia online.</p>
+        <a href="#contacto" class="cta-button">Comienza tu Proyecto</a>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services-section" id="servicios">
+        <h2 class="section-title">Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Desarrollo Web</h3>
+                <p>Webs modernas, responsivas y optimizadas para tu negocio.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Automatización</h3>
+                <p>Bots, APIs y procesos automáticos para ahorrar tiempo y dinero.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Soporte Técnico</h3>
+                <p>Reparación, mantenimiento y asistencia remota/presencial.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛒</div>
+                <h3>Soluciones POS</h3>
+                <p>Sistemas de punto de venta, facturación y gestión de inventario.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Diseño Gráfico</h3>
+                <p>Identidad visual, logotipos, banners, flyers y material publicitario profesional.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛍️</div>
+                <h3>Tienda Online & Redes Sociales</h3>
+                <p>E-commerce completo, integración de pagos y gestión de redes sociales para tu marca.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video 3 debajo de servicios -->
+    <div class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="Public/Img/video (1).mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </div>
+
+    <!-- Portafolio -->
+    <section class="portfolio-section" id="portafolio">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="Public/Img/pos-mockup.png" alt="Landing POS" class="portfolio-img">
+                <h3>Landing Page POS NT</h3>
+                <p>Landing page moderna y optimizada para la promoción de un sistema POS.</p>
+                <a href="https://homeposnt.vercel.app/" target="_blank" class="portfolio-link">Ver proyecto</a>
+            </div>
+            <div class="portfolio-card">
+                <img src="Public/Img/image0 (1).jpeg" alt="POS System" class="portfolio-img">
+                <h3>POS NT - Sistema de Punto de Venta</h3>
+                <p>Sistema POS completo para gestión de ventas, inventario y clientes.</p>
+                <a href="https://posntrd.online/" target="_blank" class="portfolio-link">Ver proyecto</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Tienda Online - Demo</h3>
+                <p>Demo de una tienda online básica. Ideal para mostrar productos y simular compras.</p>
+                <a href="mis-webs/tienda-online/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Web Personal - Demo</h3>
+                <p>Ejemplo de web personal para portafolio profesional o presentación personal.</p>
+                <a href="mis-webs/web-personal/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Agencia de Marketing - Demo</h3>
+                <p>Sitio demo para una agencia de marketing digital, con enfoque en servicios y creatividad.</p>
+                <a href="mis-webs/agencia-marketing/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Blog de Noticias - Demo</h3>
+                <p>Blog de noticias de ejemplo, pensado para mostrar artículos y novedades.</p>
+                <a href="mis-webs/blog-noticias/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Servicios con Reservas - Demo</h3>
+                <p>Página demo para reservar servicios en línea, útil para negocios que requieren agendar citas.</p>
+                <a href="mis-webs/servicios-reservas/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card">
+                <img src="Public/Img/la-master.png" alt="Cafetería Las Delicias D' La Master" class="portfolio-img">
+                <h3>Cafetería Las Delicias D' La Master</h3>
+                <p>Demo de cafetería con menú visual, contacto y diseño profesional tipo flyer.</p>
+                <a href="mis-webs/cafeteria-master/index.html" target="_blank" class="portfolio-link">Ver demo</a>
+            </div>
+            <div class="portfolio-card empty">
+                <h3>Próximamente</h3>
+                <p>Agrega aquí tu próximo proyecto destacado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video 6 antes de contacto -->
+    <div class="hero-video-container" style="margin-bottom:0;">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="Public/Img/video (6).mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </div>
+
+    <!-- Contacto -->
+    <section class="contact-section" id="contacto">
+        <h2 class="section-title">Contacto</h2>
+        <form class="contact-form" id="formspree-form" action="https://formspree.io/f/xrbqbpgg" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
+            <input type="email" name="email" placeholder="Correo electrónico" required autocomplete="off">
+            <textarea name="mensaje" placeholder="Mensaje" required autocomplete="off"></textarea>
+            <button type="submit" class="cta-button">Enviar</button>
+            <div id="form-success" style="display:none;color:#0071e3;margin-top:1rem;font-weight:500;">¡Mensaje enviado correctamente!</div>
+        </form>
+        <div class="contact-info">
+            <p>O escríbenos a <a href="mailto:ntdesweb2.0@gmail.com">ntdesweb2.0@gmail.com</a></p>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2024 NTDESWEB. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Configuración de tsParticles
+        let particlesConfig = {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#0071e3" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#0071e3",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        };
+
+        tsParticles.load("tsparticles", particlesConfig);
+
+        // Menú hamburguesa responsivo
+        const hamburger = document.getElementById('navbarHamburger');
+        const mobileMenu = document.getElementById('navbarMobile');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+        // Cerrar menú móvil al hacer click en un enlace
+        document.querySelectorAll('.navbar-mobile .navbar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+            });
+        });
+
+        // Animaciones de entrada al hacer scroll
+        function revealOnScroll() {
+            document.querySelectorAll('.fade-in, .slide-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 60) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
+        // Agregar clases fade-in/slide-in a secciones y tarjetas
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.services-section, .portfolio-section, .contact-section').forEach(sec => sec.classList.add('fade-in'));
+            document.querySelectorAll('.service-card').forEach((card, i) => card.classList.add(i % 2 === 0 ? 'fade-in' : 'slide-in'));
+            document.querySelectorAll('.portfolio-card').forEach((card, i) => card.classList.add(i % 2 === 0 ? 'fade-in' : 'slide-in'));
+        });
+
+        // Parallax sutil para el fondo de partículas
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.getElementById('tsparticles').style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Lógica para mostrar mensaje de éxito tras enviar el formulario
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('formspree-form');
+            if(form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const data = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        form.reset();
+                        document.getElementById('form-success').style.display = 'block';
+                    } else {
+                        alert('Hubo un error al enviar el mensaje. Intenta nuevamente.');
+                    }
+                });
+            }
+        });
+
+        // Lógica para alternar entre videos
+        document.addEventListener('DOMContentLoaded', () => {
+            const video1 = document.getElementById('video1');
+            const video2 = document.getElementById('video2');
+            
+            video1.addEventListener('ended', () => {
+                video1.style.display = 'none';
+                video2.style.display = 'block';
+                video2.play();
+            });
+            
+            video2.addEventListener('ended', () => {
+                video2.style.display = 'none';
+                video1.style.display = 'block';
+                video1.play();
+            });
+        });
+    </script>
+    <script>
+    // Ocultar partículas cuando un video esté visible en pantalla
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top < window.innerHeight &&
+            rect.bottom > 0
+        );
+    }
+    function toggleParticles() {
+        const videos = document.querySelectorAll('video');
+        let videoVisible = false;
+        videos.forEach(video => {
+            if (isElementInViewport(video)) {
+                videoVisible = true;
+            }
+        });
+        document.getElementById('tsparticles').style.display = videoVisible ? 'none' : 'block';
+    }
+    window.addEventListener('scroll', toggleParticles);
+    window.addEventListener('resize', toggleParticles);
+    window.addEventListener('DOMContentLoaded', toggleParticles);
+    </script>
+</body>
+</html> 

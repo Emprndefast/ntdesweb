@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - Demo</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f5f5f7; margin: 0; }
+        header { background: #0071e3; color: #fff; padding: 2rem 0; text-align: center; }
+        nav { background: #fff; box-shadow: 0 2px 8px #0001; padding: 1rem 0; text-align: center; }
+        nav a { color: #0071e3; margin: 0 1.5rem; text-decoration: none; font-weight: 500; }
+        nav a:hover { text-decoration: underline; }
+        .hero { background: #fff; padding: 2rem; text-align: center; }
+        .hero h2 { color: #0071e3; }
+        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 900px; margin: 2rem auto; }
+        .product-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0002; padding: 1.5rem; text-align: center; }
+        .product-card img { width: 100%; max-width: 120px; margin-bottom: 1rem; }
+        .product-card h3 { margin: 0.5rem 0; }
+        .product-card p { color: #86868b; }
+        .buy-btn { background: #0071e3; color: #fff; border: none; border-radius: 6px; padding: 0.7rem 1.5rem; font-size: 1rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; }
+        .buy-btn:hover { background: #005bb5; }
+        footer { background: #fff; color: #86868b; text-align: center; padding: 1.5rem 0 1rem 0; font-size: 1rem; border-top: 1px solid #eee; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tienda Online - Demo</h1>
+    </header>
+    <nav>
+        <a href="#productos">Productos</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <section class="hero">
+        <h2>Bienvenido a la Tienda Online de Demostración</h2>
+        <p>Explora productos y prueba la experiencia de compra.</p>
+        <a href="#productos" class="buy-btn">Ver Productos</a>
+    </section>
+    <main>
+        <section id="productos">
+            <h2>Productos Destacados</h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="assets/producto1.png" alt="Producto 1">
+                    <h3>Producto 1</h3>
+                    <p>Descripción breve del producto 1.</p>
+                    <button class="buy-btn">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/producto2.png" alt="Producto 2">
+                    <h3>Producto 2</h3>
+                    <p>Descripción breve del producto 2.</p>
+                    <button class="buy-btn">Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/producto3.png" alt="Producto 3">
+                    <h3>Producto 3</h3>
+                    <p>Descripción breve del producto 3.</p>
+                    <button class="buy-btn">Comprar</button>
+                </div>
+            </div>
+        </section>
+        <section id="ofertas">
+            <h2>Ofertas Especiales</h2>
+            <p>¡Aprovecha nuestras promociones por tiempo limitado!</p>
+        </section>
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Nombre" required style="margin-bottom:10px;width:100%;padding:0.5rem;">
+                <input type="email" placeholder="Correo electrónico" required style="margin-bottom:10px;width:100%;padding:0.5rem;">
+                <textarea placeholder="Mensaje" required style="margin-bottom:10px;width:100%;padding:0.5rem;"></textarea>
+                <button class="buy-btn" type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tienda Online Demo</p>
+    </footer>
+</body>
+</html> 

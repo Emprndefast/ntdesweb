@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agencia de Marketing - Demo</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    body { margin: 0; font-family: 'Montserrat', Arial, sans-serif; background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%); }
+    header { background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%); color: #fff; padding: 2.5rem 0 1.5rem 0; text-align: center; }
+    header h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
+    nav { background: #fff; box-shadow: 0 2px 8px #0001; text-align: center; padding: 1rem 0; }
+    nav a { color: #dd2476; margin: 0 1.5rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { text-decoration: underline; }
+    .hero { text-align: center; padding: 3rem 1rem 2rem 1rem; }
+    .hero h2 { color: #dd2476; font-size: 2.2rem; margin-bottom: 1rem; }
+    .hero p { color: #333; font-size: 1.2rem; margin-bottom: 2rem; }
+    .cta-btn { background: #ff512f; color: #fff; border: none; border-radius: 980px; padding: 1rem 2.5rem; font-size: 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 12px #ff512f40; transition: background 0.2s; }
+    .cta-btn:hover { background: #dd2476; }
+    .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin: 3rem 0; }
+    .service-card { background: #fff; border-radius: 16px; box-shadow: 0 2px 12px #0001; padding: 2rem 1.5rem; width: 260px; text-align: center; }
+    .service-card h3 { color: #ff512f; margin-bottom: 0.7rem; }
+    .service-card p { color: #555; }
+    .testimonials { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px #0002; max-width: 800px; margin: 3rem auto; padding: 2rem; }
+    .testimonial { margin-bottom: 1.5rem; }
+    .testimonial:last-child { margin-bottom: 0; }
+    .testimonial-quote { font-style: italic; color: #dd2476; }
+    .testimonial-author { color: #333; font-weight: 600; margin-top: 0.5rem; }
+    footer { background: #fff; color: #86868b; text-align: center; padding: 1.5rem 0 1rem 0; font-size: 1rem; border-top: 1px solid #eee; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agencia de Marketing - Demo</h1>
+  </header>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <section class="hero">
+    <h2>Impulsa tu marca con creatividad y estrategia</h2>
+    <p>Somos una agencia de marketing digital enfocada en resultados. Creamos campañas, gestionamos redes y potenciamos tu presencia online.</p>
+    <a href="#contacto" class="cta-btn">Solicita tu Estrategia</a>
+  </section>
+  <section class="services" id="servicios">
+    <div class="service-card">
+      <h3>Branding</h3>
+      <p>Construimos la identidad visual de tu marca para destacar en el mercado.</p>
+    </div>
+    <div class="service-card">
+      <h3>Publicidad Digital</h3>
+      <p>Campañas en Google, Facebook, Instagram y más para llegar a tu público ideal.</p>
+    </div>
+    <div class="service-card">
+      <h3>Gestión de Redes</h3>
+      <p>Administramos y creamos contenido para tus redes sociales.</p>
+    </div>
+    <div class="service-card">
+      <h3>Email Marketing</h3>
+      <p>Automatización y diseño de correos para fidelizar clientes.</p>
+    </div>
+  </section>
+  <section class="testimonials" id="testimonios">
+    <h2 style="text-align:center;color:#ff512f;">Testimonios</h2>
+    <div class="testimonial">
+      <div class="testimonial-quote">"Gracias a la agencia, nuestras ventas crecieron un 40% en 3 meses."</div>
+      <div class="testimonial-author">- Cliente Satisfecho</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">"El equipo es creativo, profesional y siempre atento a nuestras necesidades."</div>
+      <div class="testimonial-author">- Empresa XYZ</div>
+    </div>
+  </section>
+  <section id="contacto" style="text-align:center;margin:3rem 0;">
+    <h2 style="color:#dd2476;">Contáctanos</h2>
+    <form style="max-width:400px;margin:0 auto;">
+      <input type="text" placeholder="Nombre" required style="margin-bottom:10px;width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ddd;">
+      <input type="email" placeholder="Correo electrónico" required style="margin-bottom:10px;width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ddd;">
+      <textarea placeholder="Mensaje" required style="margin-bottom:10px;width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ddd;"></textarea>
+      <button class="cta-btn" type="submit">Enviar</button>
+    </form>
+  </section>
+  <footer>
+    &copy; 2024 Agencia de Marketing Demo
+  </footer>
+</body>
+</html>

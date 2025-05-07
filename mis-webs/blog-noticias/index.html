@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Noticias - Demo</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        body { background: #f4f6fa; color: #222; font-family: 'Merriweather', serif; margin: 0; }
+        header { background: #1e293b; color: #fff; padding: 2rem 0 1rem 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2.3rem; letter-spacing: -1px; }
+        nav { background: #fff; box-shadow: 0 2px 8px #0001; text-align: center; padding: 1rem 0; }
+        nav a { color: #2563eb; margin: 0 1.5rem; text-decoration: none; font-weight: 600; }
+        nav a:hover { text-decoration: underline; }
+        .container { display: flex; max-width: 1100px; margin: 2.5rem auto; gap: 2rem; }
+        .main-content { flex: 3; }
+        .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .article-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 8px #0002; padding: 1.2rem; }
+        .article-card img { width: 100%; border-radius: 10px; margin-bottom: 1rem; }
+        .article-card h3 { margin: 0.5rem 0; color: #2563eb; }
+        .article-card p { color: #444; }
+        .read-btn { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 0.5rem 1.2rem; font-size: 1rem; cursor: pointer; margin-top: 0.7rem; transition: background 0.2s; }
+        .read-btn:hover { background: #1e40af; }
+        .sidebar { flex: 1; background: #fff; border-radius: 14px; box-shadow: 0 2px 8px #0001; padding: 1.5rem; }
+        .sidebar h4 { color: #2563eb; margin-top: 0; }
+        .category-list { list-style: none; padding: 0; }
+        .category-list li { margin-bottom: 0.7rem; }
+        .category-list a { color: #1e293b; text-decoration: none; }
+        .category-list a:hover { color: #2563eb; }
+        footer { background: #fff; color: #86868b; text-align: center; padding: 1.5rem 0 1rem 0; font-size: 1rem; border-top: 1px solid #eee; margin-top: 2rem; }
+        @media (max-width: 900px) { .container { flex-direction: column; gap: 0; } .sidebar { margin-top: 2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog de Noticias - Demo</h1>
+    </header>
+    <nav>
+        <a href="#articulos">Artículos</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="container">
+        <main class="main-content" id="articulos">
+            <h2 style="color:#2563eb;">Últimas Noticias</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <img src="assets/noticia1.jpg" alt="Noticia 1">
+                    <h3>Título de la Noticia 1</h3>
+                    <p>Resumen breve de la noticia 1 para captar la atención del lector.</p>
+                    <button class="read-btn">Leer más</button>
+                </div>
+                <div class="article-card">
+                    <img src="assets/noticia2.jpg" alt="Noticia 2">
+                    <h3>Título de la Noticia 2</h3>
+                    <p>Resumen breve de la noticia 2 para captar la atención del lector.</p>
+                    <button class="read-btn">Leer más</button>
+                </div>
+                <div class="article-card">
+                    <img src="assets/noticia3.jpg" alt="Noticia 3">
+                    <h3>Título de la Noticia 3</h3>
+                    <p>Resumen breve de la noticia 3 para captar la atención del lector.</p>
+                    <button class="read-btn">Leer más</button>
+                </div>
+            </div>
+        </main>
+        <aside class="sidebar" id="categorias">
+            <h4>Categorías</h4>
+            <ul class="category-list">
+                <li><a href="#">Tecnología</a></li>
+                <li><a href="#">Negocios</a></li>
+                <li><a href="#">Cultura</a></li>
+                <li><a href="#">Salud</a></li>
+                <li><a href="#">Deportes</a></li>
+            </ul>
+        </aside>
+    </div>
+    <section id="contacto" style="max-width:600px;margin:3rem auto 0 auto;background:#fff;border-radius:14px;box-shadow:0 2px 8px #0001;padding:2rem;">
+        <h2 style="color:#2563eb;">Contacto</h2>
+        <form>
+            <input type="text" placeholder="Nombre" required style="margin-bottom:10px;width:100%;padding:0.5rem;border-radius:6px;border:1px solid #ddd;">
+            <input type="email" placeholder="Correo electrónico" required style="margin-bottom:10px;width:100%;padding:0.5rem;border-radius:6px;border:1px solid #ddd;">
+            <textarea placeholder="Mensaje" required style="margin-bottom:10px;width:100%;padding:0.5rem;border-radius:6px;border:1px solid #ddd;"></textarea>
+            <button class="read-btn" type="submit">Enviar</button>
+        </form>
+    </section>
+    <footer>
+        &copy; 2024 Blog de Noticias Demo
+    </footer>
+</body>
+</html> 
