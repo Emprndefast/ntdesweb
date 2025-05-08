@@ -419,6 +419,31 @@
         .contact-form, .contact-form input, .contact-form textarea, .cta-button, .navbar, .navbar-mobile {
             pointer-events: auto;
         }
+        /* Gradiente animado para el título */
+        .animate-gradient-move {
+            background-size: 200% 200%;
+            animation: gradientMove 3s linear infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Reveal animado de izquierda a derecha */
+        .reveal-title::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 2;
+            animation: revealTitle 1.2s cubic-bezier(.77,0,.18,1) forwards;
+        }
+        @keyframes revealTitle {
+            0% { left: 0; width: 100%; }
+            80% { left: 0; width: 0; }
+            100% { left: 100%; width: 0; }
+        }
     </style>
 </head>
 <body>
@@ -459,7 +484,9 @@
                 Tu navegador no soporta el elemento de video.
             </video>
         </div>
-        <h1 class="hero-title">Soluciones Digitales<br>para tu Negocio</h1>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-move drop-shadow-lg relative overflow-hidden reveal-title">
+            Soluciones Digitales<br>para tu Negocio
+        </h1>
         <p class="hero-desc">Transformamos ideas en experiencias digitales excepcionales. Diseño, desarrollo y estrategia para impulsar tu presencia online.</p>
         <a href="#contacto" class="cta-button">Comienza tu Proyecto</a>
     </section>

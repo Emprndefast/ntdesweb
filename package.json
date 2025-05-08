@@ -1,0 +1,38 @@
+{
+  "name": "ntdesweb",
+  "version": "1.0.0",
+  "description": "Sitio web profesional de desarrollo web",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./styles/main.css -o ./styles/output.css --watch",
+    "build": "tailwindcss -i ./styles/main.css -o ./styles/output.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emprndefast/ntdesweb.git"
+  },
+  "keywords": [
+    "web development",
+    "design",
+    "portfolio"
+  ],
+  "author": "NTDESWEB",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Emprndefast/ntdesweb/issues"
+  },
+  "homepage": "https://github.com/Emprndefast/ntdesweb#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "framer-motion": "^11.0.3",
+    "gsap": "^3.12.5"
+  }
+}
